@@ -3,9 +3,7 @@ package com.example.keystorage.endpoint;
 import com.example.keystorage.exception.BadRequestException;
 import com.example.keystorage.exception.EmailAlreadyExistsException;
 import com.example.keystorage.exception.UsernameAlreadyExistsException;
-import com.example.keystorage.model.Profile;
-import com.example.keystorage.model.Role;
-import com.example.keystorage.model.User;
+import com.example.keystorage.model.*;
 import com.example.keystorage.payload.*;
 import com.example.keystorage.service.TotpManager;
 import com.example.keystorage.service.UserService;
@@ -21,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Collections;
 
 @RestController
 @Slf4j
@@ -54,6 +53,8 @@ public class AuthEndpoint {
                         .displayName(payload.getName())
                         .build())
                 .mfa(true)
+                .usernames(Collections.emptySet())
+                .keys(Collections.emptySet())
                 .build();
 
         User saved;

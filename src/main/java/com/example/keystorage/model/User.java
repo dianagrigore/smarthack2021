@@ -60,6 +60,7 @@ public class User {
         this.createdAt = user.getCreatedAt();
         this.updatedAt = user.getUpdatedAt();
         this.active = user.active;
+        this.mfa = true;
         this.userProfile = user.userProfile;
         this.roles = user.roles;
         this.usernames = user.usernames;
