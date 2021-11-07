@@ -14,14 +14,12 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @Document
 public class Username {
-    String account; //an identifier (smth like facebook account)
     @NotBlank
     String username;
     @NotBlank
     Password password;
 
     public Username(Username username) {
-        this.account = username.account;
         this.username = username.username;
         this.password = username.password;
     }

@@ -1,5 +1,12 @@
 package com.example.keystorage.service;
 
+import com.example.keystorage.model.Password;
+import com.example.keystorage.model.User;
+import com.example.keystorage.repository.UserRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
+import java.util.Set;
 
 import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
@@ -8,8 +15,14 @@ import org.passay.PasswordGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class PasswordService {
+    private final UserRepository repository;
+    public PasswordService(UserRepository repository) {
+        this.repository = repository;
+    }
+
+
 
     public String generatePassword(int length, boolean alpha, boolean upper, boolean lower, boolean special, boolean num){
         CharacterRule digits = new CharacterRule(EnglishCharacterData.Digit);

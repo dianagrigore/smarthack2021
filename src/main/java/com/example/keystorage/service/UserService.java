@@ -1,9 +1,7 @@
 package com.example.keystorage.service;
 
 import com.example.keystorage.exception.*;
-import com.example.keystorage.model.KeyStorageUserDetails;
-import com.example.keystorage.model.Role;
-import com.example.keystorage.model.User;
+import com.example.keystorage.model.*;
 import com.example.keystorage.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 @Service
 @Slf4j
@@ -99,4 +96,44 @@ public class UserService {
         log.info("retrieving user {}", id);
         return userRepository.findById(id);
     }
+
+    public Map<Username, Password> getUsersPasses(String id) {
+        Set<Username> usernameSet = userRepository.findById(id).get().getUsernames();
+        Map<Username, Password> maps = new HashMap<>();
+        for(Username username : usernameSet)
+        {
+            Password pass = username.getPassword();
+            maps.put(username, pass);
+        }
+        return maps;
+    }
+
+    public void addUsernameForUser(String id, Username username) {
+        User user = null;
+        if(userRepository.findById(id).isPresent()) {
+            user = userRepository.findById(id).get();
+        }
+        if (user != null) {
+            Set<Username> usernames = user.getUsernames();
+            usernames.add(username);
+        }
+    }
+
+    public Username createUsername(String us, String pass) {
+        Username username = new Username(us, new Password(pass));
+        return username;
+    }
+
+
+    public void deleteUsername(String id, String value) {
+        Set<Username> usernames = userRepository.findById(id).get().getUsernames();
+        for(Username u : usernames)
+        {
+            if(Objects.equals(u.getUsername(), value)) {
+                usernames.remove(u);
+                return;
+            }
+        }
+    }
+
 }

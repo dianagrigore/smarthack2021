@@ -67,4 +67,12 @@ public class User {
         this.keys = user.keys;
     }
 
+
+    public Set<Key> getKeys() {
+        return keys;
+    }
+
+    public Set<Username> getUsernames() {
+        return usernames;
+    }
 }
