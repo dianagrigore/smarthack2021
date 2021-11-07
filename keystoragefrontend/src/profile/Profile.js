@@ -3,6 +3,7 @@ import {Button, Card, Avatar, Form, Input, Space} from "antd";
 import {LogoutOutlined, UserOutlined} from "@ant-design/icons";
 import { getCurrentUser } from "../util/ApiUtil";
 import "./Profile.css";
+import {Link} from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -37,82 +38,100 @@ const Profile = (props) => {
     };
 
     return (
-        <div><div className="profile-container">
-            <Card
-                style={{ width: 420, border: "1px solid #e1e0e0" }}
-                actions={[<LogoutOutlined onClick={logout} />]}
-            >
-                <Meta
-                    avatar={
-                        <img
-                            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                            alt="profile-img"
-                            className="profile-img-card"
-                        />
-                    }
-                    title={currentUser.name}
-                    description={"@" + currentUser.username}
-                />
-            </Card>
-
-    <Form
-        className="login-form"
-        initialValues={{ remember: true }}
-        onFinish={on}
-    >
-        <br></br>
-        <Form.Item
-            name="username"
-            rules={[{ required: true, message: "Please input the password you want to encrypt" }]}
-        >
-            <Input
-                size="large"
-                prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Encrypt password"
-            />
-        </Form.Item>
-        <Space>
-            <Form.Item>
-                <Button
-                    shape="round"
-                    size="lg"
-                    type="primary"
-                    htmlType="submit"
-                >Encrypt password
-                </Button>
-            </Form.Item></Space>
-    </Form>
-            <br></br>
-            <Form
-                className="login-form"
-                initialValues={{ remember: true }}
-                onFinish={on}
-            >
-                <Form.Item
-                    name="username"
-                    rules={[{ required: true, message: "Please input the password you want to encrypt" }]}
+        <>
+            <div><div className="profile-container">
+                <Card
+                    style={{ width: 420, border: "1px solid #e1e0e0" }}
+                    actions={[<LogoutOutlined onClick={logout} />]}
                 >
-                    <Input
-                        size="large"
-                        prefix={<UserOutlined className="site-form-item-icon" />}
-                        placeholder="Decrypt password"
+                    <Meta
+                        avatar={
+                            <img
+                                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                                alt="profile-img"
+                                className="profile-img-card"
+                            />
+                        }
+                        title={currentUser.name}
+                        description={"@" + currentUser.username}
                     />
-                </Form.Item>
-                <Space>
-                    <Form.Item>
-                        <Button
-                            shape="round"
-                            size="lg"
-                            type="primary"
-                            htmlType="submit"
+                </Card>
 
-                        >
-                           Decrypt password
-                        </Button>
-                    </Form.Item></Space>
-            </Form>
-            <br></br>
-        </div></div>
+                <Form
+                    className="login-form"
+                    initialValues={{ remember: true }}
+                    onFinish={on}
+                >
+                    <br></br>
+                    <Form.Item
+                        name="username"
+                        rules={[{ required: true, message: "Please input the password you want to encrypt" }]}
+                    >
+                        <Input
+                            size="large"
+                            prefix={<UserOutlined className="site-form-item-icon" />}
+                            placeholder="Encrypt password"
+                        />
+                    </Form.Item>
+                    <Space>
+                        <Form.Item>
+                            <Button
+                                shape="round"
+                                size="lg"
+                                type="primary"
+                                htmlType="submit"
+                            >Encrypt password
+                            </Button>
+                        </Form.Item></Space>
+                </Form>
+                <br></br>
+                <Form
+                    className="login-form"
+                    initialValues={{ remember: true }}
+                    onFinish={on}
+                >
+                    <Form.Item
+                        name="username"
+                        rules={[{ required: true, message: "Please input the password you want to encrypt" }]}
+                    >
+                        <Input
+                            size="large"
+                            prefix={<UserOutlined className="site-form-item-icon" />}
+                            placeholder="Decrypt password"
+                        />
+                    </Form.Item>
+                    <Space>
+                        <Form.Item>
+                            <Button
+                                shape="round"
+                                size="lg"
+                                type="primary"
+                                htmlType="submit"
+
+                            >
+                                Decrypt password
+                            </Button>
+                        </Form.Item></Space>
+                </Form>
+                <br></br>
+            </div></div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <div>
+                <h2>Choose what you want to do:</h2>
+                <Button tag={Link} to={`/generatePassword`}><a href={"/generatePassword"}>Generate a password</a></Button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Button tag={Link} to={`/generateKeys`}><a href={"/generateKeys"}>Generate keys</a></Button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Button tag={Link} to={`/viewPasswords`}><a href={"/viewPasswords"}>View passwords</a></Button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Button tag={Link} to={`/viewKeys`}><a href={"/viewKeys"}>View keys</a></Button>
+            </div>
+
+        </>
     );
 };
 

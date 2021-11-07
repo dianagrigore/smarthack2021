@@ -5,6 +5,7 @@ import Signup from "./signup/Signup";
 import Profile from "./profile/Profile";
 import QrCode from "./qrcode/QrCode";
 import VerifyCode from "./verifycode/VerifyCode";
+import GeneratePassword from "./GeneratePassword";
 
 import "./App.css";
 
@@ -33,6 +34,10 @@ const App = (props) => {
                 exact
                 path="/verify"
                 render={(props) => <VerifyCode {...props} />}
+            />
+            <Route
+                path="/generatePassword"
+                render={(props) => <GeneratePassword {...props} />}
             />
           </Switch>
         </BrowserRouter>

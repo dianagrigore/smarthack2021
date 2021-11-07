@@ -40,7 +40,12 @@ const VerifyCode = (props) => {
 
     return (
         <div className="login-container">
-            <DingtalkOutlined style={{ fontSize: 50 }} />
+            {/*<DingtalkOutlined style={{ fontSize: 50 }} />*/}
+            <img
+                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                alt="profile-img"
+                className="profile-img-card"
+            />
             <Form
                 name="normal_login"
                 className="login-form"
