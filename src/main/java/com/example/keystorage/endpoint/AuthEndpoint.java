@@ -53,7 +53,7 @@ public class AuthEndpoint {
                         .builder()
                         .displayName(payload.getName())
                         .build())
-                .mfa(payload.isMfa())
+                .mfa(true)
                 .build();
 
         User saved;

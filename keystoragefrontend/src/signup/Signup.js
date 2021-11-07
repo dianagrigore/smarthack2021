@@ -87,9 +87,9 @@ const Signup = (props) => {
                 >
                     <Input size="large" type="password" placeholder="Password" />
                 </Form.Item>
-                <Form.Item name="mfa" valuePropName="checked">
-                    <Checkbox> <div className="enableauth">Enable two-factor authentication</div></Checkbox>
-                </Form.Item>
+                {/*<Form.Item name="mfa" valuePropName="checked">*/}
+                {/*    <Checkbox> <div className="enableauth">Enable two-factor authentication</div></Checkbox>*/}
+                {/*</Form.Item>*/}
                 <Form.Item>
                     <Button
                         shape="round"
