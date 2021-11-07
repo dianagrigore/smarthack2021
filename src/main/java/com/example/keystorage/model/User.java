@@ -47,6 +47,8 @@ public class User {
 
     private boolean active;
     private Profile userProfile;
+    private Set<Key> keys;
+    private Set<Username> usernames;
     private Set<Role> roles;
     private boolean mfa;
     private String secret;
@@ -60,6 +62,8 @@ public class User {
         this.active = user.active;
         this.userProfile = user.userProfile;
         this.roles = user.roles;
+        this.usernames = user.usernames;
+        this.keys = user.keys;
     }
 
 }
