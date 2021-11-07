@@ -3,15 +3,25 @@
     margin: 0 auto;
     margin: 0 auto;
     margin-top: 40px;
-    /* border: 1px solid #e1e0e0;
+     border: 1px solid #e1e0e0;
     background-color: #fff;
-    border-radius: 10px; */
+    border-radius: 10px;
 }
 
 .user-avatar-circle {
     width: 150px !important;
     height: 150px !important;
     cursor: pointer;
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .ant-card-meta-title {

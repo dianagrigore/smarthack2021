@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Button, notification, Checkbox } from "antd";
 import { Redirect } from "react-router-dom";
-import { DingtalkOutlined } from "@ant-design/icons";
 import { signup } from "../util/ApiUtil";
 import "./Signup.css";
 
@@ -53,7 +52,11 @@ const Signup = (props) => {
 
     return (
         <div className="login-container">
-            <DingtalkOutlined style={{ fontSize: 50 }} />
+            <img
+                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                alt="profile-img"
+                className="profile-img-card"
+            />
             <Form
                 name="normal_login"
                 className="login-form"
@@ -85,7 +88,7 @@ const Signup = (props) => {
                     <Input size="large" type="password" placeholder="Password" />
                 </Form.Item>
                 <Form.Item name="mfa" valuePropName="checked">
-                    <Checkbox>Enable two-factor authentication</Checkbox>
+                    <Checkbox> <div className="enableauth">Enable two-factor authentication</div></Checkbox>
                 </Form.Item>
                 <Form.Item>
                     <Button
@@ -98,7 +101,7 @@ const Signup = (props) => {
                         Signup
                     </Button>
                 </Form.Item>
-                Already a member? <a href="/login">Log in</a>
+                Already a member? <a className="loginlink" href="/login">Log in</a>
             </Form>
         </div>
     );

@@ -40,9 +40,10 @@ const Profile = (props) => {
             >
                 <Meta
                     avatar={
-                        <Avatar
-                            src={currentUser.profilePicture}
-                            className="user-avatar-circle"
+                        <img
+                            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                            alt="profile-img"
+                            className="profile-img-card"
                         />
                     }
                     title={currentUser.name}

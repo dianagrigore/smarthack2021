@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button, notification } from "antd";
+import React, { useEffect, useState, Component } from "react";
+import {Form, Input, Button, notification, Space} from "antd";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import {
@@ -58,8 +58,13 @@ const Signin = (props) => {
     }
 
     return (
+
         <div className="login-container">
-            <DingtalkOutlined style={{ fontSize: 50 }} />
+            <img
+                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                alt="profile-img"
+                className="profile-img-card"
+            />
             <Form
                 name="normal_login"
                 className="login-form"
@@ -87,18 +92,20 @@ const Signin = (props) => {
                         placeholder="Password"
                     />
                 </Form.Item>
+                <Space>
                 <Form.Item>
                     <Button
                         shape="round"
-                        size="large"
+                        size="lg"
+                        type="primary"
                         htmlType="submit"
-                        className="login-form-button"
                         loading={loading}
                     >
                         Log in
                     </Button>
-                </Form.Item>
-                Not a member yet? <a href="/signup">Sign up</a>
+                </Form.Item></Space>
+                <div className="text-down-below">
+                Not a member yet? <a className="mov" href="/signup">Sign up</a></div>
             </Form>
         </div>
     );
