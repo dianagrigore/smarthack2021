@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Avatar } from "antd";
-import { LogoutOutlined } from "@ant-design/icons";
+import {Button, Card, Avatar, Form, Input, Space} from "antd";
+import {LogoutOutlined, UserOutlined} from "@ant-design/icons";
 import { getCurrentUser } from "../util/ApiUtil";
 import "./Profile.css";
 
@@ -27,13 +27,17 @@ const Profile = (props) => {
             });
     };
 
+    const on = () => {
+
+    }
+
     const logout = () => {
         localStorage.removeItem("accessToken");
         props.history.push("/login");
     };
 
     return (
-        <div className="profile-container">
+        <div><div className="profile-container">
             <Card
                 style={{ width: 420, border: "1px solid #e1e0e0" }}
                 actions={[<LogoutOutlined onClick={logout} />]}
@@ -50,7 +54,65 @@ const Profile = (props) => {
                     description={"@" + currentUser.username}
                 />
             </Card>
-        </div>
+
+    <Form
+        className="login-form"
+        initialValues={{ remember: true }}
+        onFinish={on}
+    >
+        <br></br>
+        <Form.Item
+            name="username"
+            rules={[{ required: true, message: "Please input the password you want to encrypt" }]}
+        >
+            <Input
+                size="large"
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Encrypt password"
+            />
+        </Form.Item>
+        <Space>
+            <Form.Item>
+                <Button
+                    shape="round"
+                    size="lg"
+                    type="primary"
+                    htmlType="submit"
+                >Encrypt password
+                </Button>
+            </Form.Item></Space>
+    </Form>
+            <br></br>
+            <Form
+                className="login-form"
+                initialValues={{ remember: true }}
+                onFinish={on}
+            >
+                <Form.Item
+                    name="username"
+                    rules={[{ required: true, message: "Please input the password you want to encrypt" }]}
+                >
+                    <Input
+                        size="large"
+                        prefix={<UserOutlined className="site-form-item-icon" />}
+                        placeholder="Decrypt password"
+                    />
+                </Form.Item>
+                <Space>
+                    <Form.Item>
+                        <Button
+                            shape="round"
+                            size="lg"
+                            type="primary"
+                            htmlType="submit"
+
+                        >
+                           Decrypt password
+                        </Button>
+                    </Form.Item></Space>
+            </Form>
+            <br></br>
+        </div></div>
     );
 };
 

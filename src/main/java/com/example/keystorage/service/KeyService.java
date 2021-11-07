@@ -1,7 +1,5 @@
 package com.example.keystorage.service;
 
-
-import com.example.keystorage.model.User;
 import com.example.keystorage.repository.UserRepository;
 import com.nimbusds.oauth2.sdk.auth.Secret;
 
